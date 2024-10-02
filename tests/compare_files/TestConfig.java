@@ -1,5 +1,3 @@
-// Generated with ninja-bear v1.0.0 (https://pypi.org/project/ninja-bear/).
-
 package my.test.testpackage;
 
 public class TestConfig {
@@ -11,3 +9,4 @@ public class TestConfig {
     public final static String myRegex = "Test Reg(E|e)x";
     public final static String mySubstitutedString = "Sometimes I just want to scream Hello World!";
 }
+// Generated with ninja-bear v1.0.0 (https://pypi.org/project/ninja-bear/).
