@@ -1,5 +1,5 @@
 from typing import List
-from ninja_bear import GeneratorBase, Property, PropertyType, NamingConventionType
+from ninja_bear import GeneratorBase, Property, PropertyType, NamingConventionType, DumpInfo
 from ninja_bear.base.generator_configuration import GeneratorConfiguration
 from ninja_bear.helpers.package_handling import evaluate_package
 
@@ -22,17 +22,17 @@ class Generator(GeneratorBase):
         return NamingConventionType.PASCAL_CASE
     
     def _line_comment(self, string: str) -> str:
-        return f' // {string}'
+        return f'// {string}'
     
-    def _dump(self, type_name: str, properties: List[Property]) -> str:
+    def _dump(self, info: DumpInfo) -> str:
         # Add package name.
         code = f'package {self.package};\n\n'
 
         # Start class definition.
-        code += f'public class {type_name} {{\n'
+        code += f'public class {info.type_name} {{\n'
 
         # Add properties.
-        for property in properties:
+        for property in info.properties:
             type = property.type
 
             if type == PropertyType.BOOL:
@@ -53,6 +53,8 @@ class Generator(GeneratorBase):
                 value = f'"{value}"'  # Wrap in quotes.
             else:
                 raise Exception('Unknown type')
-            code += f'{' ' * self._indent}public final static {type} {property.name} = {value};\n'
+            
+            comment = f' {self._line_comment(property.comment)}' if property.comment else ''
+            code += f'{' ' * info.indent}public final static {type} {property.name} = {value};{comment}\n'
 
         return code + '}'
