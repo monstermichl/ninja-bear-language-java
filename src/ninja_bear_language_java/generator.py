@@ -55,6 +55,6 @@ class Generator(GeneratorBase):
                 raise Exception('Unknown type')
             
             comment = f' {self._line_comment(property.comment)}' if property.comment else ''
-            code += f'{' ' * info.indent}public final static {type} {property.name} = {value};{comment}\n'
+            code += f'{" " * info.indent}public final static {type} {property.name} = {value};{comment}\n'
 
         return code + '}'
