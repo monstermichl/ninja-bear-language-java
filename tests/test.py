@@ -10,7 +10,7 @@ from src.ninja_bear_language_java.config import Config
 
 # Desired code outcome when using ninja-bear-language-java.
 _COMPARE_FILE_CONTENT = """
-package my.test.testpackage;
+package com.example.testpackage;
 
 public class TestConfig {
     public final static boolean myBoolean = true;
