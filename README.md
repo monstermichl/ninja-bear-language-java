@@ -24,8 +24,7 @@ languages:
   # -------------------------------------------------------------------------
   - language: ninja-bear-language-java
     package: com.example.testpackage
-    file_naming: snake
-    property_naming: pascal
+    property_naming: camel
 
 properties:
   - type: bool
